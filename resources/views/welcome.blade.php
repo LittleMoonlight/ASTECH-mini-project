@@ -13,11 +13,12 @@
 
 <body>
     <div class="container mt-5">
-        <div class="row g-4">
+        <div class="row g-4 m-2">
             <div class="col-lg-6">
                 <div class="card form-card">
                     <div class="card-body">
                         <h2 class="text-center mb-4">Total Saldo: Rp. {{ number_format($saldo->saldo ?? '0') }}</h2>
+                        <hr class="text-white">
                         <form action="{{ route('simpan_data') }}" method="POST">
                             @csrf
                             <div class="row g-3 mb-3">
@@ -83,7 +84,7 @@
                 </div>
 
                 <div class="row mt-5">
-                    <h5 class="mb-3 text-light">History</h5>
+                    <h5 class="mb-3 text-light ">History</h5>
                     @foreach ($history as $his)
                         <div class="history-card" data-bs-toggle="popover" data-bs-trigger="hover"
                             data-bs-content="{{ $his->keterangan }}" data-bs-placement="top">
@@ -117,13 +118,19 @@
             </div>
 
             <div class="col-lg-6">
-                <div class="card chart-card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-12 mb-4">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5>Pemasukan</h5>
                                 <canvas id="pemasukanChart"></canvas>
                             </div>
-                            <div class="col-12">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5>Pengeluaran</h5>
                                 <canvas id="pengeluaranChart"></canvas>
                             </div>
                         </div>
@@ -131,8 +138,6 @@
                 </div>
             </div>
         </div>
-
-
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
